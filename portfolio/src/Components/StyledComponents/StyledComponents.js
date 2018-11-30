@@ -1,26 +1,5 @@
 import styled from "styled-components";
 
-export const FlexNotes = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-  background-color: white;
-  overfly-x: hidden;
-  overflow-y: auto;
-  height: auto;
-`;
-export const Modal = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 40vw;
-  height: 30vh;
-  background-color: white;
-  color: black;
-`;
 export const FGitHubButton = styled.button`
   border: none;
   outline: none;
@@ -75,8 +54,6 @@ export const ViewProjectButton = styled.button`
   outline: none;
   cursor: pointer;
   background: none;
-  position: relative;
-
   font-size: 12px;
   a {
     &:hover {
@@ -84,38 +61,40 @@ export const ViewProjectButton = styled.button`
       cursor: pointer;
     }
   }
-  grid-row: 1;
-  grid-column: 1;
 `;
 
-export const MiddleSection = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-`;
 export const Overview = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-  background: black;
-  background: url("wingsuitcover.jpg") no-repeat top center fixed;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  max-width: 1100px;
+  padding-top: 5%;
+  padding-bottom: 7%;
+  background: url("wingsuitcover.jpg") no-repeat top right local;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  @media (max-width: 800px) {
+  @media (max-width: 1100px) {
     background: url("wingsuitcover.jpg") no-repeat top center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    padding: 5%;
+  }
+  @media (max-width: 500px) {
+    background: url("wingsuitcover.jpg") no-repeat top center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin-bottom: 20%;
+    padding-left: 7%;
+    width: 100%;
   }
 `;
 export const Projects = styled.div`
@@ -125,9 +104,9 @@ export const Projects = styled.div`
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
-  width: 100%;
+  width: auto;
+  margin: 0 auto;
 
-  min-width: 300px;
   background: #8360c3; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to left,
@@ -141,39 +120,20 @@ export const Projects = styled.div`
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 `;
 
-export const FlexDiv = styled.div`
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-
-  width: 50%;
-  height: 80vh;
-  overfly-x: hidden;
-  overflow-y: auto;
-  justify-content: space-around;
-
-  @media (max-width: 900px) {
-    background: none;
-    box-shadow: none;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-  }
-`;
 export const FlexDivColumn = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-end;
+  justify-content: flex-end;
   background: black;
   justify-content: center;
-  width: 100%;
-  max-width: 1100px;
-
-  overfly-x: hidden;
+  margin: 0 auto;
+  max-width: 100%;
+  @media (min-width: 1100px) {
+    max-width: 80%;
+  }
 `;
 
 export const Sidebar = styled.div`
@@ -288,85 +248,84 @@ export const MaskText = styled.div`
 `;
 
 export const PrimaryButton = styled.button`
-  margin-top: 10px;
+  margin-top: 3%;
   display: flex;
-  outline: none;
   justify-content: center;
   align-items: center;
   background: #2ebf91;
-
+  width: 70%;
+  height: 25%;
+  padding: 1%;
   color: white;
-  min-width: 75px;
-  width: 100%;
   border: none;
-  font-size: 16px;
-  height: 30px;
+  font-size: 1rem;
   cursor: pointer;
   border-radius: 5px;
-`;
-export const LogoutButton = styled.button`
-  margin-top: 10px;
-  display: flex;
-  outline: none;
-  justify-content: center;
-  align-items: center;
-  background-color: red;
-  color: white;
-  min-width: 75px;
-  width: 100%;
-  border: none;
-  font-size: 16px;
-  height: 30px;
-  cursor: pointer;
+  margin-top: 2%;
+  margin-bottom: 1%;
+  @media (min-width: 500px) {
+    width: 50%;
+    margin-right: 1%;
+    margin-bottom: 1%;
+    margin-top: 2%;
+    height: 40%;
+  }
+  @media (min-width: 800px) {
+    width: 35%;
+    margin-right: 1%;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    height: 40%;
+  }
 `;
 
 export const MiniButtons = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 30px;
+  grid-template-rows: 20%;
   grid-gap: 2px;
   grid-column: 1;
   grid-row: 4;
-  margin-bottom: 20px;
+  margin-bottom: 1%;
+  margin-top: 1%;
+  padding: 3%;
   border: 1px solid grey;
 `;
 
 export const Header = styled.span`
   font-weight: bold;
-  position: absolute;
-  top: 20px;
-  right: 50px;
-  width: 450px;
+  font-family: "Oswald", Sans-Serif;
   text-wrap: wrap;
-  padding: 20px 10px 0 10px;
+margin-bottom: 2%
   color: #ffffff;
   font-family: "Oswald", Sans-Serif;
-  font-size: 72px;
-  line-height: 74px;
-  text-align: right;
+  font-size: 4.5rem;
+  line-height: 5rem;
+  text-align: left;
   @media (max-width: 800px) {
-    font-size: 40px;
+    font-size: 3rem;
+    line-height: 1.25;
+  }
+   @media (max-width: 400px) {
+    font-size: 2rem;
     line-height: 1.25;
   }
 `;
 export const SectionHeader = styled.span`
   font-weight: bold;
   z-index: 30;
-  top: -5px;
+  width: 100%;
   color: #ffffff;
   font-family: "Oswald", Sans-Serif;
-  font-size: 78px;
-  line-height: 70px;
+  font-size: 4.5rem;
+  margin-bottom: -0.5%;
   background: none;
-`;
-
-export const LinkBar = styled.span`
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  color: grey;
-  padding-left: 20px;
-  padding-right: 10px;
+  @media (min-width: 500px) {
+    color: #ffffff;
+    font-family: "Oswald", Sans-Serif;
+    background: none;
+    position: relative;
+  }
 `;
 
 export const DownloadButton = styled(PrimaryButton)`
@@ -380,9 +339,11 @@ export const DownloadButton = styled(PrimaryButton)`
 
 export const Tag = styled.span`
   color: #ffffff;
-  padding: 5px;
+  padding: 2%;
+  font-family: Sans-Serif;
   border-radius: 5px;
   background: #8360c3;
-  margin: 5px;
-  font-size: 12px;
+  margin: 1%;
+  font-size: 0.75rem;
+  white-space: nowrap;
 `;

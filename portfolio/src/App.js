@@ -2,74 +2,58 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { themeSwitch } from "./Actions";
 import projects from "./projectdata";
-import { Route, Link } from "react-router-dom";
+import { Tooltip } from "primereact/tooltip";
 import {
-  MiddleSection,
-  Sidebar,
-  TopBar,
-  Tag,
   DownloadButton,
   Overview,
   PrimaryButton,
   Header,
   FlexDivColumn,
-  Projects,
   SectionHeader,
-  MiniBox,
   MiniButtons,
   ViewProjectButton
 } from "./Components/StyledComponents/StyledComponents";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
-import {
-  TimelineMax,
-  CSSPlugin,
-  ScrollToPlugin,
-  TweenLite,
-  Power4,
-  Sine
-} from "gsap/all";
+import { CSSPlugin, ScrollToPlugin, TweenLite } from "gsap/all";
 import GSAP from "react-gsap-enhancer";
 import ProjectList from "./Components/ProjectList";
-import { Messages } from "primereact/messages";
-import { Message } from "primereact/message";
 
 let hue = 0;
 let plugins = [ScrollToPlugin, CSSPlugin];
 //usually the problem when GSAP plugins arent working. add this line!
 
 const MyBtn = styled(ViewProjectButton)`
-  font-size: 30px;
+  font-size: 2rem;
+  width: 25%;
 `;
 
 const SubHeader = Header.extend`
   color: #8360c3;
   font-family: "Oswald", Sans-Serif;
-  font-size: 26px;
-  line-height: 30px;
-  text-align: right;
-  position: absolute;
-  top: 175px;
+  font-size: 1.5rem;
+  line-height: 1.6rem;
+  text-wrap: wrap;
+
+  text-align: ;
+
   text-shadow: none;
   @media (max-width: 800px) {
-    font-size: 16px;
-    top: 130px;
+    font-size: 1rem;
+  }
+  @media (max-width: 800px) {
+    font-size: 1.5rem;
+    width: 50%;
   }
 `;
-const ParagraphHeader = Header.extend`
-  color: #00dbde;
-  font-family: "Oswald", Sans-Serif;
-  font-size: 32px;
-  line-height: 30px;
-  text-align: right;
-  position: relative;
-  right: 0;
-`;
 
-const MyButtons = styled(MiniButtons)`
-  margin: 20px;
+const MyButtons = styled.div`
+  margin: 2%;
   border: none;
   display: flex;
+  width: 30%;
+  padding: 0 2% 0 14%;
+
   justify-content: space-around;
   a {
     color: white;
@@ -77,52 +61,34 @@ const MyButtons = styled(MiniButtons)`
   &:hover {
     color: #8360c3;
   }
+  @media (min-width: 500px) {
+    width: 30%;
+    padding: 0 2% 0 0;
+  }
 `;
-const Paragraph = SubHeader.extend`
+const Paragraph = styled.p`
   color: #f1f1f1;
-  font-family: "Quattrocento", Serif;
-  font-size: 16px;
-  width: 300px;
+  font-family: sans-serif;
+  font-size: 1rem;
+  width: 35%;
   font-weight: normal;
-  text-align: right;
-  position: absolute;
-  top: 220px;
+  text-align: left;
+  line-height: 1.25;
+
+  margin-bottom: 3%;
   text-shadow: 2px 5px 14px #000000, 2px 5px 14px #000000, 2px 5px 14px #000000,
     2px 5px 14px #000000, 2px 5px 14px #000000, 2px 5px 14px #000000,
     2px 5px 14px #000000;
   @media (max-width: 800px) {
-    font-size: 16px;
-    top: 160px;
-    width: 250px;
+    font-size: 1rem;
+    width: 50%;
+    margin-bottom: 10%;
+  }
+  @media (max-width: 500px) {
+    font-size: 1rem;
+    width: 70%;
   }
 `;
-
-const HoverRec = styled.div`
-  position: absolute;
-  top: 100px;
-  left: 100px;
-  width: 300px;
-  height: 300px;
-`;
-// const createAnim = ({target}) => {
-//   var minibox = target.find({name: 'minibox'})
-//   return new TimelineMax()
-//     .set(minibox, {
-//       width: 1,
-//       height: 1,
-//       borderWidth:0
-//     })
-//     .to(minibox, 2, {
-//        height: 500,
-//        width: 300,
-//        borderWidth: 0,
-//        borderRadius: 10,
-//      })
-
-// }
-
-//for API KEY: create a constants.js file, with an export for your google api key
-//or create a variable below this line that stores your API key.
 
 class App extends Component {
   constructor(props) {
@@ -134,16 +100,7 @@ class App extends Component {
 
   componentDidMount() {
     // this.addAnimation(createAnim)
-    this.showWarn();
   }
-
-  showWarn = () => {
-    this.messages.show({
-      severity: "warn",
-      summary: "Warn Message",
-      detail: `This site is under construction as of ${Date.now()}`
-    });
-  };
 
   onMouseMove = e => {
     console.log("x", e.screenX, "y", e.screenY);
@@ -165,88 +122,80 @@ class App extends Component {
     return (
       <FlexDivColumn>
         <Overview>
-          <Messages ref={el => (this.messages = el)} />
-          <HoverRec />
-
-          {/* <TopBar/> */}
           <Header>
             YOUR COMPANY.
             <br />
             NEW HEIGHTS.
           </Header>
-          <SubHeader>JJ ASHCRAFT // FULL-STACK DEVELOPER</SubHeader>
+          <SubHeader>JJ ASHCRAFT, FULL-STACK DEVELOPER</SubHeader>
           <Paragraph>
-            Currently, my work involves helping others with the look, feel and
-            function of their online presence. I have the ability to both design
-            and develop for my clients, although I prefer to handle the
-            development side. I've worked with some of the latest frameworks
-            including React/Redux, and I'm constantly on the hunt for new
-            learning opportunities. When I'm not designing and coding, you can
-            find me on the dropzone coaching and mentoring new skydivers.
+            Currently, my work involves helping businesses with the look, feel
+            and function of their online presence. <br />
+            <br /> I have the ability to both design and develop for my clients,
+            although I prefer to handle the development side. I've worked with
+            some of the latest frameworks including React/Redux, and I'm
+            constantly on the hunt for new learning opportunities. When I'm not
+            designing and coding, you can find me on the dropzone coaching and
+            mentoring new skydivers.
             <br />
-            <PrimaryButton onClick={this.scrollTween}>
-              Current Projects
-            </PrimaryButton>
-            <DownloadButton>
-              <a
-                href="https://github.com/JJAshcraft/resume/blob/master/JJAshcraft_resume.pdf"
-                rel="noopener"
-                target="_blank"
-              >
-                Download Resume
-              </a>
-            </DownloadButton>
-            <MyButtons>
-              <MyBtn>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://www.linkedin.com/in/jjashcraft/"
-                >
-                  <i class="fab fa-linkedin" />
-                </a>
-              </MyBtn>
-
-              <MyBtn>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://github.com/JJAshcraft"
-                >
-                  <i class="fab fa-github" />
-                </a>
-              </MyBtn>
-
-              <MyBtn>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://medium.com/@jjashcraft"
-                >
-                  <i class="fab fa-medium" />
-                </a>
-              </MyBtn>
-
-              <MyBtn>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://www.instagram.com/jjashcraft/"
-                >
-                  <i class="fab fa-instagram" />
-                </a>
-              </MyBtn>
-            </MyButtons>
           </Paragraph>
+          <PrimaryButton onClick={this.scrollTween}>
+            Current Projects
+          </PrimaryButton>
+          <DownloadButton>
+            <a
+              href="https://github.com/JJAshcraft/resume/blob/master/JJAshcraft_resume.pdf"
+              rel="noopener"
+              target="_blank"
+            >
+              Download Resume
+            </a>
+          </DownloadButton>
+          <MyButtons>
+            <MyBtn>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.linkedin.com/in/jjashcraft/"
+              >
+                <i className="fab fa-linkedin" />
+              </a>
+            </MyBtn>
+
+            <MyBtn>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/JJAshcraft"
+              >
+                <i className="fab fa-github" />
+              </a>
+            </MyBtn>
+
+            <MyBtn>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://medium.com/@jjashcraft"
+              >
+                <i className="fab fa-medium" />
+              </a>
+            </MyBtn>
+
+            <MyBtn>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.instagram.com/jjashcraft/"
+              >
+                <i className="fab fa-instagram" />
+              </a>
+            </MyBtn>
+          </MyButtons>
         </Overview>
         <SectionHeader id="projects"> PROJECTS </SectionHeader>
-        <Projects>
-          {/* {this.state.projects.map(project => {
-           return <MiniNote project={project} key={Date.now()}/>
-         })}
-          */}
-          <ProjectList />
-        </Projects>
+
+        <ProjectList />
       </FlexDivColumn>
     );
   }
