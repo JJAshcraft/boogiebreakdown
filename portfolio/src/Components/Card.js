@@ -33,6 +33,7 @@ const ProjectDescription = styled.p`
   font-size: 1rem;
   font-family: Sans-Serif;
   margin-bottom: 3%;
+  line-height: 1.25;
   margin-top: 3%;
   @media (max-width: 1100px) {
     text-align: center;
@@ -40,7 +41,8 @@ const ProjectDescription = styled.p`
 `;
 
 const ProjectImage = styled.img`
-  max-width: 100%;
+  height: 100%;
+ 
   text-align: center;
   padding-bottom: 2%;
   @media (max-width: 1024px) {

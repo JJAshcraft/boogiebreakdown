@@ -14,13 +14,7 @@ const List = styled.div`
 `;
 
 class ProjectList extends Component {
-  // Will break this down into a Card component
-  // card(project) {
-  //   const small = project.thumb;
-  //   console.log(small);
-  //   const large = project.large;
-  //   return <Card />;
-  // }
+
   render() {
     return (
       <List>

@@ -144,7 +144,7 @@ class App extends Component {
           </PrimaryButton>
           <DownloadButton>
             <a
-              href="https://github.com/JJAshcraft/resume/blob/master/JJAshcraft_resume.pdf"
+              href="https://drive.google.com/file/d/1I64aiTXx1g6V86_zVV7G2JlUNmgAx3qp/view"
               rel="noopener"
               target="_blank"
             >
