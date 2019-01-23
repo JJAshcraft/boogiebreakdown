@@ -144,7 +144,7 @@ class App extends Component {
           </PrimaryButton>
           <DownloadButton>
             <a
-              href="https://drive.google.com/file/d/1I64aiTXx1g6V86_zVV7G2JlUNmgAx3qp/view"
+              href="https://drive.google.com/file/d/0B2sSQ6SMk_NWMGRZNlZiWGdKZlhqbVBVY1lMSnpLZUI2NkFN/view?usp=sharing"
               rel="noopener"
               target="_blank"
             >
